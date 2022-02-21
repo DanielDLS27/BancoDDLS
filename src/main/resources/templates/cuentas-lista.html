@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+</head>
+<body>
+<h3 th:text="${titulo}"></h3>
+<br>
+<br>
+
+
+<form th:if="${!cuentas.isEmpty()}" th:action="@{/buscar-cuenta-por-id}" th:object="${cuenta}" method="post">
+	<table>
+		<tr>
+			<td>ID de la cuenta:</td>
+			<td><input type="text" th:field="*{idCuenta}" required /></td>
+		</tr>
+		<br>
+		<tr>
+			<td><input type="submit" value="Buscar" /></td>
+		</tr>
+	</table>
+</form>
+
+<br>
+<br>
+
+<p th:if="${mensajeError}" th:text="${mensajeError}"></p>
+<p th:if="${cuentasEncontradas}" th:text="${mensajeSucces}"></p>
+
+<table th:if="${cuentasEncontradas}">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Cliente ID</th>
+			<th>Saldo</th>
+			<th>Dia de Creacion</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+			<tr th:each="cuentaF: ${cuentasEncontradas}"></tr>
+			<tr th:each="cuentaF: ${cuentasEncontradas}">
+				<td th:text="${cuentaF.getIdCuenta()}"></td>
+				<td th:text="${cuentaF.getIdCliente().getIdCliente()}"></td>
+				<td th:text="${cuentaF.getSaldoActual()}"></td>
+				<td th:text="${cuentaF.getCreacion()}"></td>
+			</tr>
+	</tbody>
+</table>
+
+<br>
+<br>
+
+<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Cliente ID</th>
+			<th>Saldo</th>
+			<th>Dia de Creacion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<p th:if="${cuentas.isEmpty()}">La lista de cuentas esta vacia</p>
+	
+			<tr th:each="cuenta: ${cuentas}"></tr>
+			<tr th:each="cuenta: ${cuentas}">
+				<td th:text="${cuenta.getIdCuenta()}"></td>
+				<td th:text="${cuenta.getIdCliente().getIdCliente()}"></td>
+				<td th:text="${cuenta.getSaldoActual()}"></td>
+				<td th:text="${cuenta.getCreacion()}"></td>
+			</tr>
+	</tbody>
+</table>
+
+
+</body>
+</html>

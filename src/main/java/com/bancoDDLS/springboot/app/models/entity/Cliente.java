@@ -24,7 +24,7 @@ public class Cliente implements Serializable {
 	@Column(name = "id_cliente")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotEmpty
-	private long idCliente;
+	private Long idCliente;
 	
 	@Column
 	@NotEmpty
@@ -42,15 +42,11 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	private String email;
 	
-	@JoinColumn(name = "id_cuenta",  nullable = false)
-	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="idCliente")
-	private Cuenta idCuenta;
-	
-	public long getIdCliente() {
+	public Long getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(long idCliente) {
+	public void setIdCliente(Long idCliente) {
 		this.idCliente = idCliente;
 	}
 
@@ -86,13 +82,6 @@ public class Cliente implements Serializable {
 		this.email = email;
 	}
 
-	public Cuenta getIdCuenta() {
-		return idCuenta;
-	}
-
-	public void setIdCuenta(Cuenta idCuenta) {
-		this.idCuenta = idCuenta;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

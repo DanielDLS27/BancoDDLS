@@ -22,7 +22,7 @@ public class Tarjeta implements Serializable {
 	@Id
 	@Column(name = "id_tarjeta")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idTarjeta;
+	private Long idTarjeta;
 	
 	@Column(name = "numero_tarjeta")
 	@NotEmpty
@@ -40,11 +40,11 @@ public class Tarjeta implements Serializable {
 	@NotEmpty
 	private String tipoTarjeta;
 
-	public long getIdTarjeta() {
+	public Long getIdTarjeta() {
 		return idTarjeta;
 	}
 
-	public void setIdTarjeta(long idTarjeta) {
+	public void setIdTarjeta(Long idTarjeta) {
 		this.idTarjeta = idTarjeta;
 	}
 

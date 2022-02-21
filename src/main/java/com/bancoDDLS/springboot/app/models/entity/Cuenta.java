@@ -28,9 +28,9 @@ public class Cuenta implements Serializable{
 	@Id
 	@Column(name = "id_cuenta")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idCuenta;
+	private Long idCuenta;
 	
-	@JoinColumn(name = "id_cliente", nullable = false)
+	@JoinColumn(name = "id_cliente", /*referencedColumnName = "idCliente",*/ nullable = false)
 	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private Cliente idCliente;
 	
@@ -43,11 +43,11 @@ public class Cuenta implements Serializable{
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date creacion;
 
-	public long getIdCuenta() {
+	public Long getIdCuenta() {
 		return idCuenta;
 	}
 
-	public void setIdCuenta(long idCuenta) {
+	public void setIdCuenta(Long idCuenta) {
 		this.idCuenta = idCuenta;
 	}
 
