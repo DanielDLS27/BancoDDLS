@@ -13,4 +13,8 @@ public interface ITarjetaDao {
 	public Tarjeta findByNumeroTarjeta(String numeroTarjeta);
 	
 	public List<Tarjeta> findByIdCuenta(Long idCuenta);
+	
+	public void save(Tarjeta tarjeta);
+	
+	public void delete(Long id);
 }

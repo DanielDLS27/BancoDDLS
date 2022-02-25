@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${titulo}"></title>
+<link href="../static/css/Layout.css" th:href="@{/css/Layout.css}" rel="stylesheet" />
 </head>
 <body>
 <h3 th:text="${titulo}"></h3>
 <br>
 <br>
 
+<a class="btnAceptar" th:href="@{/form-cuenta}">Registrar cuenta</a>
+<br>
 
 <form th:if="${!cuentas.isEmpty()}" th:action="@{/buscar-cuenta-por-id}" th:object="${cuenta}" method="post">
 	<table>
@@ -18,7 +21,7 @@
 		</tr>
 		<br>
 		<tr>
-			<td><input type="submit" value="Buscar" /></td>
+			<td><input class="btnAceptar" type="submit" value="Buscar" /></td>
 		</tr>
 	</table>
 </form>
@@ -26,8 +29,8 @@
 <br>
 <br>
 
-<p th:if="${mensajeError}" th:text="${mensajeError}"></p>
-<p th:if="${cuentasEncontradas}" th:text="${mensajeSucces}"></p>
+<p class="msjWarning" th:if="${mensajeError}" th:text="${mensajeError}"></p>
+<p class="msjSuccess" th:if="${cuentasEncontradas}" th:text="${mensajeSucces}"></p>
 
 <table th:if="${cuentasEncontradas}">
 	<thead>
@@ -63,7 +66,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<p th:if="${cuentas.isEmpty()}">La lista de cuentas esta vacia</p>
+		<p class="msjWarning" th:if="${cuentas.isEmpty()}">La lista de cuentas esta vacia</p>
 	
 			<tr th:each="cuenta: ${cuentas}"></tr>
 			<tr th:each="cuenta: ${cuentas}">
@@ -71,10 +74,14 @@
 				<td th:text="${cuenta.getIdCliente().getIdCliente()}"></td>
 				<td th:text="${cuenta.getSaldoActual()}"></td>
 				<td th:text="${cuenta.getCreacion()}"></td>
+				<td><a class="btnWarning" th:href="@{/form-cuenta/} + ${cuenta.getIdCuenta()}" th:text="'Editar'"></a></td>
+				<td><a class="btnDanger" th:href="@{/eliminar-cuenta/} + ${cuenta.getIdCuenta()}" th:text="'Eliminar'" onclick="return confirm('¿Desea eliminar la cuenta?');"></a></td>
 			</tr>
 	</tbody>
 </table>
 
+<hr>
+	<a th:href="@{/}">Volver...</a>
 
 </body>
 </html>

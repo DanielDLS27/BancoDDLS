@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+<link href="../static/css/Layout.css" th:href="@{/css/Layout.css}" rel="stylesheet"/>
+</head>
+<body>
+
+	<h3 th:text="${titulo}"></h3>
+	<br>
+	
+	<br>
+	
+	<tbody>
+	
+		<p th:if="${result}" th:text="${mensaje}"></p>
+		
+		<div>
+			<form th:action="@{/form-tarjeta}" th:object="${tarjeta}" method="post">
+				<table>
+					<tr>
+						<td>Numero de tarjeta (16 digitos)</td>
+						<td><input type="text" th:field="*{numeroTarjeta}" required></td>
+					</tr>
+					<tr>
+						<td>ICV (3 digitos)</td>
+						<td><input type="text" th:field="*{icv}" required></td>
+					</tr>
+					<tr>
+						<td>Tipo de tarjeta (Fisica o Digital)</td>
+						<td><input type="text" th:field="*{tipoTarjeta}" required></td>
+					</tr>
+					<tr>
+						<td>ID Cuenta</td>
+						<td>
+							<select th:field="*{idCuenta}" >
+								<option th:each="cuenta : ${listaCuentas}"
+								        th:value="${cuenta.getIdCuenta()}"
+								        th:text="${cuenta.getIdCuenta()}"></option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				
+				<br> <input class="btnAceptar" type="submit" value="Registrar tarjeta" />
+			</form>
+		</div>
+		
+	</tbody>
+	
+	<hr>
+	<a th:href="@{tarjetas-lista}">Volver...</a>
+
+</body>
+</html>

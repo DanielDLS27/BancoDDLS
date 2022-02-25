@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${titulo}"></title>
+<link href="../static/css/Layout.css" th:href="@{/css/Layout.css}" rel="stylesheet"/>
 </head>
 <body>
 <h3 th:text="${titulo}"></h3>
 <br>
 <br>
 
+<a class="btnAceptar" th:href="@{/form-tarjeta}">Registrar tarjeta</a>
+<br>
 
 <form th:if="${!tarjetas.isEmpty()}" th:action="@{/buscar-tarjeta-por-numeroYIdCuenta}" th:object="${tarjeta}" method="post">
 	<table>
@@ -18,7 +21,7 @@
 		</tr>
 		<br>
 		<tr>
-			<td><input type="submit" value="Buscar" /></td>
+			<td><input class="btnAceptar" type="submit" value="Buscar" /></td>
 		</tr>
 	</table>
 </form>
@@ -26,8 +29,8 @@
 <br>
 <br>
 
-<p th:if="${mensajeError}" th:text="${mensajeError}"></p>
-<p th:if="${tarjetasEncontradas}" th:text="${mensajeSuccess}"></p>
+<p class="msjWarining" th:if="${mensajeError}" th:text="${mensajeError}"></p>
+<p class="msjSuccess" th:if="${tarjetasEncontradas}" th:text="${mensajeSuccess}"></p>
 
 <table th:if="${tarjetasEncontradas}">
 	<thead>
@@ -66,7 +69,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<p th:if="${tarjetas.isEmpty()}">La lista de tarjetas esta vacia</p>
+		<p class="msjWarning" th:if="${tarjetas.isEmpty()}">La lista de tarjetas esta vacia</p>
 	
 			<tr th:each="tarjeta: ${tarjetas}"></tr>
 			<tr th:each="tarjeta: ${tarjetas}">
@@ -75,10 +78,14 @@
 				<td th:text="${tarjeta.getIdCuenta().getIdCuenta()}"></td>
 				<td th:text="${tarjeta.getIcv()}"></td>
 				<td th:text="${tarjeta.getTipoTarjeta()}"></td>
+				<td><a class="btnWarning" th:href="@{/form-tarjeta/} + ${tarjeta.getIdTarjeta()}" th:text="'Editar'"></a></td>
+				<td><a class="btnDanger" th:href="@{/eliminar-tarjeta/} + ${tarjeta.getIdTarjeta()}" th:text="'Eliminar'" onclick="return confirm('¿Desea eliminar la tarjeta?');"></a></td>
 			</tr>
 	</tbody>
 </table>
 
+<hr>
+	<a th:href="@{/}">Volver...</a>
 
 </body>
 </html>

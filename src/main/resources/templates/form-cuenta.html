@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+<link href="../static/css/Layout.css" th:href="@{/css/Layout.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<h3 th:text="${titulo}"></h3>
+	<br>
+	
+	<br>
+	
+	<tbody>
+	
+		<p th:if="${result}" th:text="${mensaje}"></p>
+		
+		<div>
+			<form th:action="@{/form-cuenta}" th:object="${cuenta}" method="post">
+				<table>
+					<tr>
+						<td>Saldo</td>
+						<td><input type="text" th:field="*{saldoActual}" required></td>
+					</tr>
+					<tr>
+						<td>Fecha de Creacion (yyyy-MM-dd)</td>
+						<td><input type="text" th:field="*{creacion}" required></td>
+					</tr>
+					<tr>
+						<td>ID Cliente</td>
+						<td>
+							<select th:field="*{idCliente}" >
+								<option th:each="cliente : ${listaClientes}"
+								        th:value="${cliente.getIdCliente()}"
+								        th:text="${cliente.getIdCliente()+' Nombre: '+cliente.getNombre()}"></option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				
+				<br> <input class="btnAceptar" type="submit" value="Registrar cuenta" />
+			</form>
+		</div>
+		
+	</tbody>
+	
+	<hr>
+	<a th:href="@{cuentas-lista}">Volver...</a>
+
+</body>
+</html>

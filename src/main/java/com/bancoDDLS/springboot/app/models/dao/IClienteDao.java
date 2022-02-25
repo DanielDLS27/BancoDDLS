@@ -14,4 +14,8 @@ public interface IClienteDao {
 	
 	public List<Cliente> findByTelefono(String telefono);
 	
+	public void save(Cliente cliente);
+	
+	public void delete(Long id);
+	
 }

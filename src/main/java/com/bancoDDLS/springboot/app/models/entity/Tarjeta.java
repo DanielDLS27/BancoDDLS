@@ -28,7 +28,7 @@ public class Tarjeta implements Serializable {
 	@NotEmpty
 	private String numeroTarjeta;
 	
-	@JoinColumn(name = "id_cuenta", nullable = false)
+	@JoinColumn(name = "id_cuenta", referencedColumnName="id_cuenta", nullable = false)
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	private Cuenta idCuenta;
 	

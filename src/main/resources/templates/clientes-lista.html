@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="${titulo}"></title>
+<link href="../static/css/Layout.css" th:href="@{/css/Layout.css}" rel="stylesheet" />
 </head>
 <body>
 <h3 th:text="${titulo}"></h3>
 <br>
 <br>
 
+<a class="btnAceptar" th:href="@{/form-cliente}">Registrar cliente</a>
+<br>
 
 <form th:if="${!clientes.isEmpty()}" th:action="@{/buscar-cliente-por-IdTelefono}" th:object="${cliente}" method="post">
 	<table>
@@ -18,7 +21,7 @@
 		</tr>
 		<br>
 		<tr>
-			<td><input type="submit" value="Buscar" /></td>
+			<td><input class="btnAceptar" type="submit" value="Buscar" /></td>
 		</tr>
 	</table>
 </form>
@@ -26,8 +29,8 @@
 <br>
 <br>
 
-<p th:if="${mensajeError}" th:text="${mensajeError}"></p>
-<p th:if="${clientesEncontrados}" th:text="${mensajeSuccess}"></p>
+<p class="msjWarning" th:if="${mensajeError}" th:text="${mensajeError}"></p>
+<p class="msjSuccess" th:if="${clientesEncontrados}" th:text="${mensajeSuccess}"></p>
 
 <table th:if="${clientesEncontrados}">
 	<thead>
@@ -66,7 +69,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<p th:if="${clientes.isEmpty()}">La lista de clientes esta vacia</p>
+		<p class="msjWarning" th:if="${clientes.isEmpty()}">La lista de clientes esta vacia</p>
 	
 			<tr th:each="cliente: ${clientes}"></tr>
 			<tr th:each="cliente: ${clientes}">
@@ -75,9 +78,14 @@
 				<td th:text="${cliente.getApellido()}"></td>
 				<td th:text="${cliente.getNumeroTelefonico()}"></td>
 				<td th:text="${cliente.getEmail()}"></td>
+				<td><a class="btnWarning" th:href="@{/form-cliente/} + ${cliente.getIdCliente()}" th:text="'Editar'"></a></td>
+				<td><a class="btnDanger" th:href="@{/eliminar-cliente/} + ${cliente.getIdCliente()}" th:text="'Eliminar'" onclick="return confirm('¿Desea eliminar el cliente?');"></a></td>
 			</tr>
 	</tbody>
 </table>
+
+<hr>
+	<a th:href="@{/}">Volver...</a>
 
 
 </body>

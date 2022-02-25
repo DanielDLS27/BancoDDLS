@@ -56,4 +56,21 @@ public class TarjetaDaoImpl implements ITarjetaDao {
 		return result;
 	}
 
+	@Transactional
+	@Override
+	public void save(Tarjeta tarjeta) {
+		if(tarjeta.getIdTarjeta() != null && tarjeta.getIdTarjeta() > 0) {
+			em.merge(tarjeta);
+		}
+		else {
+			em.persist(tarjeta);
+		}
+	}
+
+	@Transactional
+	@Override
+	public void delete(Long id) {
+		em.remove(findOne(id));
+	}
+
 }

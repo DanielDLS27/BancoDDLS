@@ -1,0 +1,99 @@
+body {
+	margin: 0%;
+	margin-top: 10px;
+	font: 80% sans-serif;
+}
+
+a {
+	background-color: #20add8;
+	border: none;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+}
+
+h1, h2, h3, h4 {
+	background: #208bd8;
+	width: absolute;
+	margin: auto;
+	border: 2px solid #1fd1c9;
+	text-align: center;
+}
+
+tr {
+	background: #1fd1c9;
+	padding: 10px;
+}
+
+td {
+	background: #1fd1c9;
+	padding: 10px;
+}
+
+.msjWarning {
+	background-color: #eac750;
+	padding-top: 10px;
+	text-align: center;
+	width: 38%;
+	margin: 10px;
+}
+
+.msjSuccess {
+	background-color: #5cb85c;
+	padding-top: 10px;
+	text-align: center;
+	width: 38%;
+	margin: 10px;
+}
+
+.msjInfo {
+	background-color: #208ed9;
+	padding-top: 10px;
+	text-align: center;
+	width: 38%;
+	margin: 10px;
+}
+
+.nameTablas {
+	background-color: #20add8;
+	padding-top: 10px;
+	text-align: center;
+	width: 38%;
+	margin: 10px;
+}
+
+.btnAceptar {
+	background: #5cb85c;
+	border: none;
+	color: white;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+}
+
+.btnWarning {
+	background:  #eac750;
+	border: none;
+	color: black;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+}
+
+.btnDanger {
+	background: #d9534f;
+	border: none;
+	color: black;
+	padding: 5px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+}

@@ -30,8 +30,8 @@ public class Cuenta implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCuenta;
 	
-	@JoinColumn(name = "id_cliente", /*referencedColumnName = "idCliente",*/ nullable = false)
-	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
 	private Cliente idCliente;
 	
 	@Column(name = "saldo_actual")

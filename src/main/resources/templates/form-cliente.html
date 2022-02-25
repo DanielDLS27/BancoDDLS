@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+<link href="../static/css/Layout.css" th:href="@{/css/Layout.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<h3 th:text="${titulo}"></h3>
+	<br>
+	
+	<br>
+	
+	<tbody>
+	
+		<p th:if="${result}" th:text="${mensaje}"></p>
+		
+		<div>
+			<form th:action="@{/form-cliente}" th:object="${cliente}" method="post">
+				<table>
+					<tr>
+						<td>Nombre</td>
+						<td><input type="text" th:field="*{nombre}" required></td>
+					</tr>
+					<tr>
+						<td>Apellido</td>
+						<td><input type="text" th:field="*{apellido}" required></td>
+					</tr>
+					<tr>
+						<td>Telefono</td>
+						<td><input type="text" th:field="*{numeroTelefonico}" required></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input type="text" th:field="*{email}" required></td>
+					</tr>
+				</table>
+				
+				<br> <input class="btnAceptar" type="submit" value="Registrar cliente" />
+			</form>
+		</div>
+		
+	</tbody>
+	
+	<hr>
+	<a th:href="@{clientes-lista}">Volver...</a>
+
+</body>
+</html>
